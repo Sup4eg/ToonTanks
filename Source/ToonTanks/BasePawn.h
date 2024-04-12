@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "BasePawn.generated.h"
 
+class UCapsuleComponent;
+
 UCLASS()
 class TOONTANKS_API ABasePawn : public APawn
 {
@@ -16,6 +18,10 @@ public:
 
 protected:
     virtual void BeginPlay() override;
+
+private:
+    UPROPERTY()
+    UCapsuleComponent* CapsuleComponent;
 
 public:
     virtual void Tick(float DeltaTime) override;
