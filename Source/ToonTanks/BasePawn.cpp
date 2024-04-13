@@ -8,6 +8,15 @@ ABasePawn::ABasePawn()
     PrimaryActorTick.bCanEverTick = true;
     CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>("CapsuleComponent");
     RootComponent = CapsuleComponent;
+
+    BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>("BaseMesh");
+    BaseMesh->SetupAttachment(CapsuleComponent);
+
+    TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>("TurretMesh");
+    TurretMesh->SetupAttachment(BaseMesh);
+
+    ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>("ProjectileSpawnPoint");
+    ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
 
 void ABasePawn::BeginPlay()

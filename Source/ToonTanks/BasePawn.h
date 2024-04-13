@@ -23,6 +23,15 @@ private:
     UPROPERTY()
     UCapsuleComponent* CapsuleComponent;
 
+    UPROPERTY()
+    UStaticMeshComponent* BaseMesh;
+
+    UPROPERTY()
+    UStaticMeshComponent* TurretMesh;
+
+    UPROPERTY()
+    USceneComponent* ProjectileSpawnPoint;
+
 public:
     virtual void Tick(float DeltaTime) override;
 
