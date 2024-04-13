@@ -16,6 +16,18 @@ class TOONTANKS_API ABasePawn : public APawn
 public:
     ABasePawn();
 
+    UPROPERTY(VisibleAnywhere)
+    int32 VisibleAnywhereInt = 12;
+
+    UPROPERTY(EditAnywhere)
+    int32 EditAnywhereInt = 22;
+
+    UPROPERTY(VisibleInstanceOnly)
+    int32 VisibleInstanceOnlyInt = 32;
+
+    UPROPERTY(EditAnywhere)
+    float Speed = 400.f;
+
 protected:
     virtual void BeginPlay() override;
 
