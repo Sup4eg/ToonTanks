@@ -16,42 +16,21 @@ class TOONTANKS_API ABasePawn : public APawn
 public:
     ABasePawn();
 
-    UPROPERTY(VisibleInstanceOnly)
-    int32 VisibleInstanceOnlyInt = 32;
-
-    UPROPERTY(VisibleDefaultsOnly)
-    int32 VisibleDefaultsOnlyInt = 5;
-
-    UPROPERTY(EditDefaultsOnly)
-    int32 EditDefaultsOnlyInt = 9;
-
-    UPROPERTY(EditInstanceOnly)
-    int32 EditOnlyInstanceInt = 10;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    float Speed = 400.f;
-
 protected:
     virtual void BeginPlay() override;
 
 private:
-    UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(VisibleAnywhere, Category = "Components")
     UCapsuleComponent* CapsuleComponent;
 
-    UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(VisibleAnywhere, Category = "Components")
     UStaticMeshComponent* BaseMesh;
 
-    UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(VisibleAnywhere, Category = "Components")
     UStaticMeshComponent* TurretMesh;
 
-    UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(VisibleAnywhere, Category = "Components")
     USceneComponent* ProjectileSpawnPoint;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Super Duper Variables", meta = (AllowPrivateAccess = "true"))
-    int32 VisibleAnywhereInt = 12;
-
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Super Duper Variables", meta = (AllowPrivateAccess = "true"))
-    int32 EditAnywhereInt = 22;
 
 public:
     virtual void Tick(float DeltaTime) override;
