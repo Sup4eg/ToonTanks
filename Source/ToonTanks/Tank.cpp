@@ -12,3 +12,15 @@ ATank::ATank()
     CameraComponent = CreateDefaultSubobject<UCameraComponent>("CameraComponent");
     CameraComponent->SetupAttachment(SpringArmComponent);
 }
+
+void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+    Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+    PlayerInputComponent->BindAxis("MoveForward", this, &ATank::Move);
+}
+
+void ATank::Move(float Value)
+{
+    UE_LOG(LogTemp, Warning, TEXT("Axis Value: %f"), Value);
+}
