@@ -19,6 +19,8 @@ public:
 protected:
     void RotateTurret(FVector LookAtTarget);
 
+    void Fire();
+
 private:
     UPROPERTY(VisibleAnywhere, Category = "Components")
     UCapsuleComponent* CapsuleComponent;
