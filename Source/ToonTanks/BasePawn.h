@@ -28,7 +28,4 @@ private:
 
     UPROPERTY(VisibleAnywhere, Category = "Components")
     USceneComponent* ProjectileSpawnPoint;
-
-public:
-    virtual void Tick(float DeltaTime) override;
 };

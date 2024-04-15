@@ -17,6 +17,8 @@ class TOONTANKS_API ATank : public ABasePawn
 public:
     ATank();
 
+    virtual void Tick(float DeltaTime) override;
+
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
