@@ -4,6 +4,7 @@
 #include "Projectile.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "HealthComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 ABasePawn::ABasePawn()
@@ -20,6 +21,8 @@ ABasePawn::ABasePawn()
 
     ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>("ProjectileSpawnPoint");
     ProjectileSpawnPoint->SetupAttachment(TurretMesh);
+
+    HealthComponent = CreateDefaultSubobject<UHealthComponent>("HealthComponent");
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)

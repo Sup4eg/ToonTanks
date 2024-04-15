@@ -8,6 +8,7 @@
 
 class UCapsuleComponent;
 class AProjectile;
+class UHealthComponent;
 
 UCLASS()
 class TOONTANKS_API ABasePawn : public APawn
@@ -34,6 +35,9 @@ private:
 
     UPROPERTY(VisibleAnywhere, Category = "Components")
     USceneComponent* ProjectileSpawnPoint;
+
+    UPROPERTY(VisibleAnywhere, Category = "Components")
+    UHealthComponent* HealthComponent;
 
     UPROPERTY(EditDefaultsOnly, Category = "Combat")
     TSubclassOf<AProjectile> ProjectileClass;
