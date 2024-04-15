@@ -27,4 +27,7 @@ private:
     USpringArmComponent* SpringArmComponent;
 
     void Move(float Value);
+
+    UPROPERTY(EditDefaultsOnly, Category = "Movement")
+    float Speed = 200.f;
 };
