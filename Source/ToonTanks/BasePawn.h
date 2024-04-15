@@ -7,6 +7,7 @@
 #include "BasePawn.generated.h"
 
 class UCapsuleComponent;
+class AProjectile;
 
 UCLASS()
 class TOONTANKS_API ABasePawn : public APawn
@@ -33,4 +34,7 @@ private:
 
     UPROPERTY(VisibleAnywhere, Category = "Components")
     USceneComponent* ProjectileSpawnPoint;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Combat")
+    TSubclassOf<AProjectile> ProjectileClass;
 };

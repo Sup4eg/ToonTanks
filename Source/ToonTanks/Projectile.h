@@ -21,6 +21,6 @@ public:
     virtual void Tick(float DeltaTime) override;
 
 private:
-    UPROPERTY(VisibleAnywhere, Category = "Components")
+    UPROPERTY(VisibleAnywhere, Category = "Combat")
     UStaticMeshComponent* ProjectileMesh;
 };
