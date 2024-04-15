@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "Projectile.generated.h"
 
+class UProjectileMovementComponent;
+
 UCLASS()
 class TOONTANKS_API AProjectile : public AActor
 {
@@ -23,4 +25,13 @@ public:
 private:
     UPROPERTY(VisibleAnywhere, Category = "Combat")
     UStaticMeshComponent* ProjectileMesh;
+
+    UPROPERTY(VisibleAnywhere, Category = "Movement")
+    UProjectileMovementComponent* ProjectileMovement;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Movement")
+    float InitialSpeed = 1300.f;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Movement")
+    float MaxSpeed = 1300.f;
 };

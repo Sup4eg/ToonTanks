@@ -2,6 +2,7 @@
 
 #include "Projectile.h"
 #include "Components/StaticMeshComponent.h"
+#include "GameFramework/ProjectileMovementComponent.h"
 
 AProjectile::AProjectile()
 {
@@ -9,6 +10,10 @@ AProjectile::AProjectile()
 
     ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>("ProjectileMesh");
     RootComponent = ProjectileMesh;
+
+    ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>("ProjectileMovement");
+    ProjectileMovement->InitialSpeed = InitialSpeed;
+    ProjectileMovement->MaxSpeed = MaxSpeed;
 }
 
 void AProjectile::BeginPlay()
