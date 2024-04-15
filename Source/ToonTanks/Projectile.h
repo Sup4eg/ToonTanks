@@ -39,6 +39,9 @@ private:
         FVector NormalImpulse,                     //
         const FHitResult& Hit);
 
+    UPROPERTY(EditDefaultsOnly, Category = "Combat")
+    float Damage = 50.f;
+
 public:
     virtual void Tick(float DeltaTime) override;
 };

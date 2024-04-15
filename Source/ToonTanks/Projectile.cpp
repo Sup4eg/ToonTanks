@@ -1,8 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Projectile.h"
+#include "GameFramework/DamageType.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 AProjectile::AProjectile()
 {
@@ -29,10 +31,17 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent,  //
     FVector NormalImpulse,                                  //
     const FHitResult& Hit)
 {
-    UE_LOG(LogTemp, Warning, TEXT("On hit!"));
-    UE_LOG(LogTemp, Warning, TEXT("Hit component: %s"), *HitComponent->GetName());
-    UE_LOG(LogTemp, Warning, TEXT("Ohter actor: %s"), *OtherActor->GetName());
-    UE_LOG(LogTemp, Warning, TEXT("Other component: %s"), *OtherComp->GetName());
+    auto MyOwner = GetOwner();
+    if (!MyOwner) return;
+
+    auto MyOwnerInstigator = MyOwner->GetInstigatorController();
+    auto DamageTypeClass = UDamageType::StaticClass();
+
+    if (OtherActor && OtherActor != this && OtherActor != MyOwner)
+    {
+        UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
+        Destroy();
+    }
 }
 
 void AProjectile::Tick(float DeltaTime)
