@@ -19,6 +19,9 @@ public:
 
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+protected:
+    virtual void BeginPlay() override;
+
 private:
     UPROPERTY(VisibleAnywhere, Category = "Components")
     UCameraComponent* CameraComponent;
@@ -35,4 +38,6 @@ private:
     void Move(float Value);
 
     void Turn(float Value);
+
+    APlayerController* PlayerControllerRef;
 };
