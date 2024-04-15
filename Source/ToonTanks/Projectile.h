@@ -19,9 +19,6 @@ public:
 protected:
     virtual void BeginPlay() override;
 
-public:
-    virtual void Tick(float DeltaTime) override;
-
 private:
     UPROPERTY(VisibleAnywhere, Category = "Combat")
     UStaticMeshComponent* ProjectileMesh;
@@ -34,4 +31,14 @@ private:
 
     UPROPERTY(EditDefaultsOnly, Category = "Movement")
     float MaxSpeed = 1300.f;
+
+    UFUNCTION()
+    void OnHit(UPrimitiveComponent* HitComponent,  //
+        AActor* OtherActor,                        //
+        UPrimitiveComponent* OtherComp,            //
+        FVector NormalImpulse,                     //
+        const FHitResult& Hit);
+
+public:
+    virtual void Tick(float DeltaTime) override;
 };
