@@ -28,5 +28,5 @@ void ABasePawn::RotateTurret(FVector LookAtTarget)
     TurretMesh->SetWorldRotation(FMath::RInterpTo(TurretMesh->GetComponentRotation(),  //
         LookAtRotation,                                                                //
         UGameplayStatics::GetWorldDeltaSeconds(this),                                  //
-        25.f));
+        15.f));
 }
