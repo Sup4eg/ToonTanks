@@ -25,8 +25,10 @@ ABasePawn::ABasePawn()
     HealthComponent = CreateDefaultSubobject<UHealthComponent>("HealthComponent");
 }
 
-void ABasePawn::HandleDestruction() {
+void ABasePawn::HandleDestruction()
+{
     // TODO: Visual / Sound effects
+    UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)

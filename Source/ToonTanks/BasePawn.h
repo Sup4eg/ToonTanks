@@ -43,4 +43,7 @@ private:
 
     UPROPERTY(EditDefaultsOnly, Category = "Combat")
     TSubclassOf<AProjectile> ProjectileClass;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Combat")
+    UParticleSystem* HitParticles;
 };
