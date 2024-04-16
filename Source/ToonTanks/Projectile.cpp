@@ -48,8 +48,8 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent,  //
         return;
     }
 
-    auto MyOwnerInstigator = MyOwner->GetInstigatorController();
-    auto DamageTypeClass = UDamageType::StaticClass();
+    AController* MyOwnerInstigator = MyOwner->GetInstigatorController();
+    UClass* DamageTypeClass = UDamageType::StaticClass();
 
     if (OtherActor && OtherActor != this && OtherActor != MyOwner)
     {
