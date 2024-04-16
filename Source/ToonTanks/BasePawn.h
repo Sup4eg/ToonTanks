@@ -9,6 +9,7 @@
 class UCapsuleComponent;
 class AProjectile;
 class UHealthComponent;
+class UCameraShakeBase;
 
 UCLASS()
 class TOONTANKS_API ABasePawn : public APawn
@@ -49,4 +50,7 @@ private:
 
     UPROPERTY(EditDefaultsOnly, Category = "Combat")
     USoundBase* DeathSound;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Combat")
+    TSubclassOf<UCameraShakeBase> DeathCameraShakeClass;
 };

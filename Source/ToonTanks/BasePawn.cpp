@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "HealthComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Camera/CameraShakeBase.h"
 
 ABasePawn::ABasePawn()
 {
@@ -28,9 +29,10 @@ ABasePawn::ABasePawn()
 void ABasePawn::HandleDestruction()
 {
     // TODO: Visual / Sound effects
-    if (!HitParticles || !DeathSound) return;
+    if (!HitParticles || !DeathSound || !DeathCameraShakeClass) return;
     UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
     UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
+    GetWorld()->GetFirstPlayerController()->PlayerCameraManager->StartCameraShake(DeathCameraShakeClass);
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)

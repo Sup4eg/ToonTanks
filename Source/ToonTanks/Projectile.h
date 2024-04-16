@@ -8,6 +8,7 @@
 
 class UProjectileMovementComponent;
 class UParticleSystemComponent;
+class UCameraShakeBase;
 
 UCLASS()
 class TOONTANKS_API AProjectile : public AActor
@@ -54,6 +55,9 @@ private:
 
     UPROPERTY(EditDefaultsOnly, Category = "Combat")
     USoundBase* HitSound;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Combat")
+    TSubclassOf<UCameraShakeBase> HitCameraShakeClass;
 
 public:
     virtual void Tick(float DeltaTime) override;

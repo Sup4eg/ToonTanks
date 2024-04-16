@@ -6,6 +6,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Camera/CameraShakeBase.h"
 
 AProjectile::AProjectile()
 {
@@ -60,6 +61,10 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent,  //
         if (HitParticles)
         {
             UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
+        }
+        if (HitCameraShakeClass)
+        {
+            GetWorld()->GetFirstPlayerController()->PlayerCameraManager->StartCameraShake(HitCameraShakeClass);
         }
     }
     Destroy();
