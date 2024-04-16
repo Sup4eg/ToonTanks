@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "HealthComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "ToonTanks/ToonTanksGameMode.h"
 
 UHealthComponent::UHealthComponent()
 {
@@ -13,6 +15,7 @@ void UHealthComponent::BeginPlay()
 
     Health = MaxHealth;
     GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
+    ToonTanksGameMode = Cast<AToonTanksGameMode>(UGameplayStatics::GetGameMode(this));
 }
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor,  //
@@ -22,8 +25,12 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor,  //
     AActor* DamageCauser)
 {
     if (Damage <= 0.0f) return;
-    Health -= Damage;
-    UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);
+    float CurrentHealth = Health - Damage;
+    Health = FMath::Clamp(CurrentHealth, 0.0f, MaxHealth);
+    if (FMath::IsNearlyZero(Health) && ToonTanksGameMode)
+    {
+        ToonTanksGameMode->ActorDied(GetOwner());
+    }
 }
 
 void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)

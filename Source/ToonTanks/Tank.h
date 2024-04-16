@@ -21,6 +21,10 @@ public:
 
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+    void HandleDestruction();
+
+    APlayerController* GetPlayerController() const { return TankPlayerController; }
+
 protected:
     virtual void BeginPlay() override;
 
@@ -41,5 +45,5 @@ private:
 
     void Turn(float Value);
 
-    APlayerController* PlayerControllerRef;
+    APlayerController* TankPlayerController;
 };

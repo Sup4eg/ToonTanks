@@ -6,6 +6,8 @@
 #include "Components/ActorComponent.h"
 #include "HealthComponent.generated.h"
 
+class AToonTanksGameMode;
+
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class TOONTANKS_API UHealthComponent : public UActorComponent
 {
@@ -29,6 +31,8 @@ private:
         const UDamageType* DamageType,      //
         AController* Instigator,            //
         AActor* DamageCauser);
+
+    AToonTanksGameMode* ToonTanksGameMode;
 
 public:
     virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
