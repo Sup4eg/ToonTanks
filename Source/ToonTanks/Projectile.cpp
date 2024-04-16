@@ -4,6 +4,7 @@
 #include "GameFramework/DamageType.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Particles/ParticleSystemComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 AProjectile::AProjectile()
@@ -16,6 +17,9 @@ AProjectile::AProjectile()
     ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>("ProjectileMovement");
     ProjectileMovement->InitialSpeed = InitialSpeed;
     ProjectileMovement->MaxSpeed = MaxSpeed;
+
+    ParticleSystemComponent = CreateDefaultSubobject<UParticleSystemComponent>("ParticleSystemComponent");
+    ParticleSystemComponent->SetupAttachment(RootComponent);
 }
 
 void AProjectile::BeginPlay()

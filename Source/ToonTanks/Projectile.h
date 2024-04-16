@@ -7,6 +7,7 @@
 #include "Projectile.generated.h"
 
 class UProjectileMovementComponent;
+class UParticleSystemComponent;
 
 UCLASS()
 class TOONTANKS_API AProjectile : public AActor
@@ -25,6 +26,9 @@ private:
 
     UPROPERTY(VisibleAnywhere, Category = "Movement")
     UProjectileMovementComponent* ProjectileMovement;
+
+    UPROPERTY(VisibleAnywhere, Category = "Combat")
+    UParticleSystemComponent* ParticleSystemComponent;
 
     UPROPERTY(EditDefaultsOnly, Category = "Movement")
     float InitialSpeed = 1300.f;
