@@ -49,6 +49,12 @@ private:
     UPROPERTY(EditDefaultsOnly, Category = "Combat")
     UParticleSystem* HitParticles;
 
+    UPROPERTY(EditDefaultsOnly, Category = "Combat")
+    USoundBase* LaunchSound;
+
+    UPROPERTY(EditDefaultsOnly, Category = "Combat")
+    USoundBase* HitSound;
+
 public:
     virtual void Tick(float DeltaTime) override;
 };
