@@ -32,7 +32,11 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent,  //
     const FHitResult& Hit)
 {
     auto MyOwner = GetOwner();
-    if (!MyOwner) return;
+    if (!MyOwner)
+    {
+        Destroy();
+        return;
+    }
 
     auto MyOwnerInstigator = MyOwner->GetInstigatorController();
     auto DamageTypeClass = UDamageType::StaticClass();
@@ -40,8 +44,12 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent,  //
     if (OtherActor && OtherActor != this && OtherActor != MyOwner)
     {
         UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
-        Destroy();
+        if (HitParticles)
+        {
+            UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
+        }
     }
+    Destroy();
 }
 
 void AProjectile::Tick(float DeltaTime)
