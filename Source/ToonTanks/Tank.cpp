@@ -4,6 +4,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Components/InputComponent.h"
 #include "DrawDebugHelpers.h"
 
 ATank::ATank()

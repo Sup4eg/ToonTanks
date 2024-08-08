@@ -7,6 +7,7 @@
 #include "Particles/ParticleSystemComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Camera/CameraShakeBase.h"
+#include "Engine/World.h"
 
 AProjectile::AProjectile()
 {
